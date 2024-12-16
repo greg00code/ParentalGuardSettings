@@ -24,10 +24,11 @@
                     <div class="settings-content" style="display: none;">
                         <select class="content-level">
                             <option value="3-6">3-6 ans</option>
-                            <option value="7-11">7-11 ans</option>
-                            <option value="12-15">12-15 ans</option>
-                            <option value="16+">16+ ans</option>
-                            <option value="adult">Adulte</option>
+                            <option value="6-8">6-8 ans</option>
+                            <option value="8-11">8-11 ans</option>
+                            <option value="11-13">11-13 ans</option>
+                            <option value="13-17">13-17 ans</option>
+                            <option value="18+">18+</option>
                         </select>
                         <button class="save-button">Sauvegarder</button>
                     </div>
@@ -41,11 +42,17 @@
                     padding: 20px;
                     border-radius: 8px;
                     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    background-color: white;
                 }
                 .settings-header {
                     display: flex;
                     justify-content: space-between;
                     margin-bottom: 20px;
+                }
+                .settings-header h2 {
+                    margin: 0;
+                    color: #333;
+                    font-size: 1.5em;
                 }
                 .password-section {
                     margin-bottom: 20px;
@@ -53,6 +60,9 @@
                 .password-input {
                     padding: 8px;
                     margin-right: 10px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    width: 200px;
                 }
                 button {
                     padding: 8px 16px;
@@ -61,6 +71,7 @@
                     border: none;
                     border-radius: 4px;
                     cursor: pointer;
+                    transition: background-color 0.2s;
                 }
                 button:hover {
                     background-color: #0056b3;
@@ -69,6 +80,13 @@
                     width: 100%;
                     padding: 8px;
                     margin-bottom: 10px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    background-color: white;
+                }
+                .content-level:focus {
+                    border-color: #007bff;
+                    outline: none;
                 }
             `;
             document.head.appendChild(style);
@@ -93,6 +111,13 @@
             saveButton.addEventListener('click', () => {
                 this.save();
             });
+
+            // Ajout de l'événement Enter sur le champ de mot de passe
+            passwordInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    unlockButton.click();
+                }
+            });
         }
 
         unlock() {
@@ -105,6 +130,7 @@
             this.isLocked = true;
             this.container.querySelector('.password-section').style.display = 'block';
             this.container.querySelector('.settings-content').style.display = 'none';
+            this.container.querySelector('.password-input').value = '';
         }
 
         save() {
