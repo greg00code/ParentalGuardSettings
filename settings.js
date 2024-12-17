@@ -4,8 +4,10 @@
         constructor(options = {}) {
             this.container = options.container || document.createElement('div');
             this.password = options.password || '1234';
+            this.onUnlock = options.onUnlock || function() {};
+            this.onError = options.onError || function() {};
             this.isLocked = true;
-            this.contentLevel = '3-6';
+            this.attemptCount = 0;
             this.initialize();
         }
 
@@ -14,23 +16,17 @@
             this.container.innerHTML = `
                 <div class="settings-container">
                     <div class="settings-header">
-                        <h2>Paramètres de contrôle parental</h2>
-                        <div class="lock-status"></div>
+                        <h2>Verrouillage Parental</h2>
                     </div>
                     <div class="password-section">
-                        <input type="password" class="password-input" placeholder="Entrez le mot de passe"/>
+                        <input type="password" 
+                               class="password-input" 
+                               placeholder="Entrez le code PIN"
+                               maxlength="4"
+                               pattern="[0-9]*"
+                               inputmode="numeric"/>
                         <button class="unlock-button">Déverrouiller</button>
-                    </div>
-                    <div class="settings-content" style="display: none;">
-                        <select class="content-level">
-                            <option value="3-6">3-6 ans</option>
-                            <option value="6-8">6-8 ans</option>
-                            <option value="8-11">8-11 ans</option>
-                            <option value="11-13">11-13 ans</option>
-                            <option value="13-17">13-17 ans</option>
-                            <option value="18+">18+</option>
-                        </select>
-                        <button class="save-button">Sauvegarder</button>
+                        <div class="error-message" style="display: none; color: red; margin-top: 10px;"></div>
                     </div>
                 </div>
             `;
@@ -43,106 +39,143 @@
                     border-radius: 8px;
                     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
                     background-color: white;
+                    max-width: 400px;
+                    margin: auto;
                 }
                 .settings-header {
-                    display: flex;
-                    justify-content: space-between;
+                    text-align: center;
                     margin-bottom: 20px;
                 }
                 .settings-header h2 {
-                    margin: 0;
                     color: #333;
-                    font-size: 1.5em;
+                    margin: 0;
                 }
                 .password-section {
-                    margin-bottom: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    align-items: center;
                 }
                 .password-input {
-                    padding: 8px;
-                    margin-right: 10px;
-                    border: 1px solid #ddd;
+                    padding: 12px;
+                    border: 2px solid #ddd;
                     border-radius: 4px;
+                    font-size: 16px;
                     width: 200px;
+                    text-align: center;
+                    letter-spacing: 4px;
                 }
-                button {
-                    padding: 8px 16px;
+                .password-input:focus {
+                    border-color: #007bff;
+                    outline: none;
+                }
+                .unlock-button {
+                    padding: 12px 24px;
                     background-color: #007bff;
                     color: white;
                     border: none;
                     border-radius: 4px;
                     cursor: pointer;
+                    font-size: 16px;
                     transition: background-color 0.2s;
+                    width: 200px;
                 }
-                button:hover {
+                .unlock-button:hover {
                     background-color: #0056b3;
                 }
-                .content-level {
-                    width: 100%;
-                    padding: 8px;
-                    margin-bottom: 10px;
-                    border: 1px solid #ddd;
-                    border-radius: 4px;
-                    background-color: white;
+                .unlock-button:disabled {
+                    background-color: #cccccc;
+                    cursor: not-allowed;
                 }
-                .content-level:focus {
-                    border-color: #007bff;
-                    outline: none;
+                .error-message {
+                    text-align: center;
+                    font-size: 14px;
                 }
             `;
             document.head.appendChild(style);
 
             // Ajout des événements
             this.addEventListeners();
+            
+            // Réinitialisation de l'état
+            this.resetState();
+        }
+
+        resetState() {
+            const input = this.container.querySelector('.password-input');
+            const button = this.container.querySelector('.unlock-button');
+            const errorMessage = this.container.querySelector('.error-message');
+            
+            if (input) {
+                input.value = '';
+                input.disabled = false;
+            }
+            if (button) {
+                button.disabled = false;
+            }
+            if (errorMessage) {
+                errorMessage.style.display = 'none';
+            }
+            this.attemptCount = 0;
         }
 
         addEventListeners() {
             const unlockButton = this.container.querySelector('.unlock-button');
-            const saveButton = this.container.querySelector('.save-button');
             const passwordInput = this.container.querySelector('.password-input');
+            const errorMessage = this.container.querySelector('.error-message');
 
-            unlockButton.addEventListener('click', () => {
+            const handleUnlock = () => {
                 if (passwordInput.value === this.password) {
                     this.unlock();
                 } else {
-                    alert('Mot de passe incorrect');
+                    this.attemptCount++;
+                    if (this.attemptCount >= 3) {
+                        errorMessage.textContent = 'Trop de tentatives. Réessayez dans quelques instants.';
+                        errorMessage.style.display = 'block';
+                        passwordInput.disabled = true;
+                        unlockButton.disabled = true;
+                        
+                        // Réactiver après 30 secondes
+                        setTimeout(() => {
+                            this.resetState();
+                        }, 30000);
+                    } else {
+                        errorMessage.textContent = 'Code PIN incorrect';
+                        errorMessage.style.display = 'block';
+                        passwordInput.value = '';
+                    }
+                    this.onError();
                 }
-            });
+            };
 
-            saveButton.addEventListener('click', () => {
-                this.save();
-            });
+            unlockButton.addEventListener('click', handleUnlock);
 
-            // Ajout de l'événement Enter sur le champ de mot de passe
             passwordInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    unlockButton.click();
+                // Permettre uniquement les chiffres
+                if (e.key < '0' || e.key > '9') {
+                    e.preventDefault();
                 }
+                // Valider avec Enter
+                if (e.key === 'Enter') {
+                    handleUnlock();
+                }
+            });
+
+            passwordInput.addEventListener('input', () => {
+                errorMessage.style.display = 'none';
             });
         }
 
         unlock() {
             this.isLocked = false;
-            this.container.querySelector('.password-section').style.display = 'none';
-            this.container.querySelector('.settings-content').style.display = 'block';
+            if (typeof this.onUnlock === 'function') {
+                this.onUnlock();
+            }
         }
 
         lock() {
             this.isLocked = true;
-            this.container.querySelector('.password-section').style.display = 'block';
-            this.container.querySelector('.settings-content').style.display = 'none';
-            this.container.querySelector('.password-input').value = '';
-        }
-
-        save() {
-            const contentLevel = this.container.querySelector('.content-level').value;
-            this.contentLevel = contentLevel;
-            // Déclencher l'événement Bubble
-            if (window.bubble && window.bubble.triggerEvent) {
-                window.bubble.triggerEvent('settings_saved', {
-                    contentLevel: this.contentLevel
-                });
-            }
-            this.lock();
+            this.resetState();
         }
     }
 
