@@ -1,1 +1,72 @@
-Ly8gUGFyZW50YWxHdWFyZFNldHRpbmdzLmpzCihmdW5jdGlvbigpIHsKICAgIGNsYXNzIFBhcmVudGFsR3VhcmRTZXR0aW5ncyB7CiAgICAgICAgY29uc3RydWN0b3Iob3B0aW9ucyA9IHt9KSB7CiAgICAgICAgICAgIHRoaXMuY29udGFpbmVyID0gb3B0aW9ucy5jb250YWluZXIgfHwgZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7CiAgICAgICAgICAgIHRoaXMucGFzc3dvcmQgPSBvcHRpb25zLnBhc3N3b3JkIHx8ICcxMjM0JzsKICAgICAgICAgICAgdGhpcy5pbml0aWFsaXplKCk7CiAgICAgICAgfQoKICAgICAgICBpbml0aWFsaXplKCkgewogICAgICAgICAgICAvLyBDcsOpYXRpb24gZHUgSFRNTCBwb3VyIGxlIFBJTiB1bmlxdWVtZW50CiAgICAgICAgICAgIHRoaXMuY29udGFpbmVyLmlubmVySFRNTCA9IGAKICAgICAgICAgICAgICAgIDxkaXYgc3R5bGU9InBhZGRpbmc6IDIwcHg7IG1heC13aWR0aDogMzAwcHg7IG1hcmdpbjogYXV0bzsgdGV4dC1hbGlnbjogY2VudGVyOyI+CiAgICAgICAgICAgICAgICAgICAgPGgzIHN0eWxlPSJtYXJnaW4tYm90dG9tOiAyMHB4OyI+QWNjw6hzIFByb3TDqWfDqTwvaDM+CiAgICAgICAgICAgICAgICAgICAgPGRpdj4KICAgICAgICAgICAgICAgICAgICAgICAgPGlucHV0IHR5cGU9InBhc3N3b3JkIiAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlkPSJwaW4taW5wdXQiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj0iRW50cmV6IGxlIGNvZGUgUElOIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3R5bGU9InBhZGRpbmc6IDEwcHg7IG1hcmdpbi1ib3R0b206IDEwcHg7IHdpZHRoOiAyMDBweDsgdGV4dC1hbGlnbjogY2VudGVyOyIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1heGxlbmd0aD0iNCI+CiAgICAgICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgICAgICAgPGJ1dHRvbiBpZD0idW5sb2NrLWJ0biIgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHlsZT0icGFkZGluZzogMTBweCAyMHB4OyBiYWNrZ3JvdW5kOiAjMDA3YmZmOyBjb2xvcjogd2hpdGU7IGJvcmRlcjogbm9uZTsgYm9yZGVyLXJhZGl1czogNHB4OyBjdXJzb3I6IHBvaW50ZXI7Ij4KICAgICAgICAgICAgICAgICAgICAgICAgRMOpdmVycm91aWxsZXIKICAgICAgICAgICAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICAgICAgICAgICAgICA8ZGl2IGlkPSJlcnJvci1tc2ciIHN0eWxlPSJjb2xvcjogcmVkOyBtYXJnaW4tdG9wOiAxMHB4OyBkaXNwbGF5OiBub25lOyI+PC9kaXY+CiAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgYDsKCiAgICAgICAgICAgIC8vIEFqb3V0IGRlcyDDqXbDqW5lbWVudHMKICAgICAgICAgICAgY29uc3QgYnV0dG9uID0gdGhpcy5jb250YWluZXIucXVlcnlTZWxlY3RvcignI3VubG9jay1idG4nKTsKICAgICAgICAgICAgY29uc3QgaW5wdXQgPSB0aGlzLmNvbnRhaW5lci5xdWVyeVNlbGVjdG9yKCcjcGluLWlucHV0Jyk7CiAgICAgICAgICAgIGNvbnN0IGVycm9yTXNnID0gdGhpcy5jb250YWluZXIucXVlcnlTZWxlY3RvcignI2Vycm9yLW1zZycpOwoKICAgICAgICAgICAgY29uc3QgdHJ5VW5sb2NrID0gKCkgPT4gewogICAgICAgICAgICAgICAgaWYgKGlucHV0LnZhbHVlID09PSB0aGlzLnBhc3N3b3JkKSB7CiAgICAgICAgICAgICAgICAgICAgZXJyb3JNc2cuc3R5bGUuY29sb3IgPSAnZ3JlZW4nOwogICAgICAgICAgICAgICAgICAgIGVycm9yTXNnLnRleHRDb250ZW50ID0gJ0FjY8OocyBhdXRvcmlzw6kgIScKICAgICAgICAgICAgICAgICAgICBlcnJvck1zZy5zdHlsZS5kaXNwbGF5ID0gJ2Jsb2NrJzsKICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAvLyBEw6ljbGVuY2hlciBsZSB3b3JrZmxvdyBCdWJibGUgKGVzc2F5ZXIgZGlmZsOpcmVudGVzIG3DqXRob2RlcykKICAgICAgICAgICAgICAgICAgICBpZiAod2luZG93LmJ1YmJsZSkgewogICAgICAgICAgICAgICAgICAgICAgICAvLyBNw6l0aG9kZSAxCiAgICAgICAgICAgICAgICAgICAgICAgIGJ1YmJsZS50cmlnZ2VyV29ya2Zsb3coJ3VubG9ja19zZXR0aW5ncycpOwogICAgICAgICAgICAgICAgICAgICAgICAvLyBNw6l0aG9kZSAyCiAgICAgICAgICAgICAgICAgICAgICAgIHRyeSB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBidWJibGUudi50cmlnZ2VyV29ya2Zsb3coJ3VubG9ja19zZXR0aW5ncycpOwogICAgICAgICAgICAgICAgICAgICAgICB9IGNhdGNoKGUpIHt9CiAgICAgICAgICAgICAgICAgICAgICAgIC8vIE3DqXRob2RlIDMKICAgICAgICAgICAgICAgICAgICAgICAgdHJ5IHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJ1YmJsZS52LmV4ZWN1dGVXb3JrZmxvdygndW5sb2NrX3NldHRpbmdzJyk7CiAgICAgICAgICAgICAgICAgICAgICAgIH0gY2F0Y2goZSkge30KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAgICAgICAgIGlucHV0LnZhbHVlID0gJyc7CiAgICAgICAgICAgICAgICAgICAgZXJyb3JNc2cuc3R5bGUuY29sb3IgPSAncmVkJzsKICAgICAgICAgICAgICAgICAgICBlcnJvck1zZy50ZXh0Q29udGVudCA9ICdDb2RlIFBJTiBpbmNvcnJlY3QnOwogICAgICAgICAgICAgICAgICAgIGVycm9yTXNnLnN0eWxlLmRpc3BsYXkgPSAnYmxvY2snOwogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9OwoKICAgICAgICAgICAgYnV0dG9uLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgdHJ5VW5sb2NrKTsKICAgICAgICAgICAgaW5wdXQuYWRkRXZlbnRMaXN0ZW5lcigna2V5cHJlc3MnLCAoZSkgPT4gewogICAgICAgICAgICAgICAgaWYgKGUua2V5ID09PSAnRW50ZXInKSB7CiAgICAgICAgICAgICAgICAgICAgdHJ5VW5sb2NrKCk7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0pOwogICAgICAgIH0KICAgIH0KCiAgICB3aW5kb3cuUGFyZW50YWxHdWFyZFNldHRpbmdzID0gUGFyZW50YWxHdWFyZFNldHRpbmdzOwp9KSgpOw==
+// ParentalGuardSettings.js
+(function() {
+    class ParentalGuardSettings {
+        constructor(options = {}) {
+            this.container = options.container || document.createElement('div');
+            this.password = options.password || '1234';
+            this.initialize();
+        }
+
+        initialize() {
+            // Création du HTML pour le PIN uniquement
+            this.container.innerHTML = `
+                <div style="padding: 20px; max-width: 300px; margin: auto; text-align: center;">
+                    <h3 style="margin-bottom: 20px;">Accès Protégé</h3>
+                    <div>
+                        <input type="password" 
+                               id="pin-input"
+                               placeholder="Entrez le code PIN"
+                               style="padding: 10px; margin-bottom: 10px; width: 200px; text-align: center;"
+                               maxlength="4">
+                    </div>
+                    <button id="unlock-btn" 
+                            style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                        Déverrouiller
+                    </button>
+                    <div id="error-msg" style="color: red; margin-top: 10px; display: none;"></div>
+                </div>
+            `;
+
+            // Ajout des événements
+            const button = this.container.querySelector('#unlock-btn');
+            const input = this.container.querySelector('#pin-input');
+            const errorMsg = this.container.querySelector('#error-msg');
+
+            const tryUnlock = () => {
+                if (input.value === this.password) {
+                    errorMsg.style.color = 'green';
+                    errorMsg.textContent = 'Accès autorisé !';
+                    errorMsg.style.display = 'block';
+                    
+                    // Déclencher le workflow Bubble (essayer différentes méthodes)
+                    if (window.bubble) {
+                        // Méthode 1
+                        bubble.triggerWorkflow('unlock_settings');
+                        // Méthode 2
+                        try {
+                            bubble.v.triggerWorkflow('unlock_settings');
+                        } catch(e) {}
+                        // Méthode 3
+                        try {
+                            bubble.v.executeWorkflow('unlock_settings');
+                        } catch(e) {}
+                    }
+                } else {
+                    input.value = '';
+                    errorMsg.style.color = 'red';
+                    errorMsg.textContent = 'Code PIN incorrect';
+                    errorMsg.style.display = 'block';
+                }
+            };
+
+            button.addEventListener('click', tryUnlock);
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    tryUnlock();
+                }
+            });
+        }
+    }
+
+    window.ParentalGuardSettings = ParentalGuardSettings;
+})();
